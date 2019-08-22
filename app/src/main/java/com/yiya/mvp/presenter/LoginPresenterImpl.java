@@ -1,19 +1,17 @@
 package com.yiya.mvp.presenter;
 
-import android.content.Context;
-
 import com.yiya.mvp.bean.LoginBean;
 import com.yiya.mvp.contract.HttpCallBack;
-import com.yiya.mvp.contract.MainContract;
-import com.yiya.mvp.model.MainModel;
+import com.yiya.mvp.contract.LoginContract;
+import com.yiya.mvp.model.LoginModelImpl;
 
-public class MainPresenter implements MainContract.Presenter, HttpCallBack<LoginBean> {
+public class LoginPresenterImpl implements LoginContract.Presenter, HttpCallBack<LoginBean> {
 
-    private MainContract.Model model;
-    private MainContract.View view;
+    private LoginContract.Model model;
+    private LoginContract.View view;
 
-    public MainPresenter(MainContract.View context) {
-        model = new MainModel();
+    public LoginPresenterImpl(LoginContract.View context) {
+        model = new LoginModelImpl();
         view = context;
     }
 
@@ -32,6 +30,5 @@ public class MainPresenter implements MainContract.Presenter, HttpCallBack<Login
     @Override
     public void error() {
         view.hideLoading();
-        view.onError();
     }
 }

@@ -1,20 +1,25 @@
 package com.yiya.mvp.contract;
 
+import com.yiya.mvp.base.BaseView;
 import com.yiya.mvp.bean.LoginBean;
 
-public interface MainContract {
+public interface LoginContract {
     interface Model {
         void login(String uid, String pwd, HttpCallBack<LoginBean> callBack);
     }
 
-    interface View {
+    interface View extends BaseView<LoginBean> {
+        @Override
         void showLoading();
 
+        @Override
         void hideLoading();
 
+        @Override
         void onSuccess(LoginBean bean);
 
-        void onError();
+        @Override
+        void onError(Throwable throwable);
     }
 
     interface Presenter {
